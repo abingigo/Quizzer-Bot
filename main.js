@@ -3,10 +3,6 @@ const MongoClient = require('mongodb').MongoClient;
 const mongo_url = "mongodb://localhost:27017/Leaderboard";
 const url = "mongodb://localhost:27017/";
 
-// quizzer = 785928731037794375
-//quizmaster = 755106658371371069
-//admin = 789382345110454272
-
 var qn, img;
 let ans = new String();
 
@@ -56,7 +52,7 @@ client.on('message', message =>{
         client.commands.get('answering').execute(message, args, ans);
     }
 
-    if(command === 'q' && message.member.roles.cache.has('789382345110454272'))
+    if(command === 'q' && message.member.roles.cache.has('')) //removed role id
     {
         var data = fs.readFileSync('Questions.txt', 'utf8');
         var s = data.toString().split('\n');
@@ -74,15 +70,15 @@ client.on('message', message =>{
         client.commands.get('question').execute(message, args, qn, img, Discord);
     }
 
-    if(command == 'start' && message.member.roles.cache.has('789382345110454272'))
+    if(command == 'start' && message.member.roles.cache.has('')) //removed role id
     {
         client.commands.get('reactionrole').execute(message, Discord, client);
     }
 
-    if(command == 'end' && message.member.roles.cache.has('789382345110454272'))
+    if(command == 'end' && message.member.roles.cache.has('')) // removed role id
     {
         client.commands.get('ending').execute(message, Discord, client);
     }
 });
 
-client.login('Nzg1OTM0MjE0OTQ3OTMwMTcy.X8_ERg.EVTi59nKQY4U6unoJAUKPeq3yRI');
+client.login(''); // removed bot token
