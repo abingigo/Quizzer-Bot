@@ -35,7 +35,7 @@ module.exports = {
             let embed = new Discord.MessageEmbed()
                 .setColor('#e42643')
                 .setTitle(a)
-            var channellog = message.client.channels.cache.get('789382147810918430');
+            var channellog = message.client.channels.cache.get(''); //removed channel id
             let messageEmbed = await channellog.send(embed);
             messageEmbed.react(emoji);
             messageEmbed.react(emoji1);
