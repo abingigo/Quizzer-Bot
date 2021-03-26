@@ -30,7 +30,7 @@ module.exports = {
               .setTitle('Quiz Results')
               .setDescription('1. <@' + `${result[0].id}` +'>' + '\n2. <@' `${result[1].id}` +'>' + '\n3. <@' `${result[2].id}`+'>');
             console.log(result);
-            var channellog = message.client.channels.cache.get('818495801658441749');
+            var channellog = message.client.channels.cache.get(''); // removed channel id
             channellog.send(embed);
             db.close();
           });
