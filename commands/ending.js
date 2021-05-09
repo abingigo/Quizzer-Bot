@@ -28,9 +28,9 @@ module.exports = {
             let embed = new Discord.MessageEmbed()
               .setColor('#e42643')
               .setTitle('Quiz Results')
-              .setDescription('1. <@' + `${result[0].id}` +'>' + '\n2. <@' `${result[1].id}` +'>' + '\n3. <@' `${result[2].id}`+'>');
+              .setDescription('1. <@' + `${result[0].id}` +'>');
             console.log(result);
-            var channellog = message.client.channels.cache.get(''); // removed channel id
+            var channellog = message.client.channels.cache.get('');
             channellog.send(embed);
             db.close();
           });

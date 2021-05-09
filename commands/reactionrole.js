@@ -12,7 +12,8 @@ module.exports = {
             .setTitle('Quiz starting soon!')
             .setDescription('Press the ' + `${emoji}` + ' to be able to participate!');
         
-        let messageEmbed = await message.channel.send(embed);
+        var channellog = message.client.channels.cache.get('');
+        let messageEmbed = await channellog.send(embed);
         messageEmbed.react(emoji);
 
         client.on('messageReactionAdd', async (reaction, user) => {
@@ -22,15 +23,21 @@ module.exports = {
             if(reaction.emoji.name == emoji)
             {
                 reaction.message.guild.members.cache.get(user.id).send("You have registered for the quiz!");
-                MongoClient.connect(url, function(err, db){
+                MongoClient.connect(url, function(err, db) {
                     if (err) throw err;
                     var dbo = db.db("Leaderboard");
-                    var obj = {id : user.id, points : 0, answered : 0};
-                    dbo.collection("Points").insertOne(obj, function(err, res){
-                        if (err) throw err;
+                    var myquery = { id : message.author.id};
+                    var obj = {id : message.author.id, points : 0, answered : 0};
+                    dbo.collection("Points").find(myquery).toArray(function(err, result) {
+                        if(err) throw err;
+                        if(result.length == 0)
+                        {
+                            dbo.collection("Points").insertOne(obj, function(err, res){
+                                if (err) throw err;
+                            });
+                        }
                     });
-                    db.close();
-                });
+                  });
             }
         });
 

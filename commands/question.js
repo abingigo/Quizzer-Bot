@@ -11,7 +11,8 @@ module.exports = {
         .setDescription(qn)
         .setImage(img)
         .setFooter("DM your answer to this bot. Prefix your answers with $a. For example if the answer is Delhi type $a Delhi.")
-        message.channel.send(newEmbed);
+        var channellog = message.client.channels.cache.get('');
+        channellog.send(newEmbed);
         MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db("Leaderboard");

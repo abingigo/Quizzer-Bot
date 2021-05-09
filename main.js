@@ -52,11 +52,10 @@ client.on('message', message =>{
         client.commands.get('answering').execute(message, args, ans);
     }
 
-    if(command === 'q' && message.member.roles.cache.has('')) //removed role id
+    if(command === 'q' && message.member.roles.cache.has(''))
     {
         var data = fs.readFileSync('Questions.txt', 'utf8');
         var s = data.toString().split('\n');
-        no = args[0];
         for(i = 0; i < s.length; i++)
         {
             if(s[i].trim() == args[0].trim())
@@ -70,15 +69,15 @@ client.on('message', message =>{
         client.commands.get('question').execute(message, args, qn, img, Discord);
     }
 
-    if(command == 'start' && message.member.roles.cache.has('')) //removed role id
+    if(command == 'start' && message.member.roles.cache.has('789382345110454272'))
     {
         client.commands.get('reactionrole').execute(message, Discord, client);
     }
 
-    if(command == 'end' && message.member.roles.cache.has('')) // removed role id
+    if(command == 'end' && message.member.roles.cache.has('789382345110454272'))
     {
         client.commands.get('ending').execute(message, Discord, client);
     }
 });
 
-client.login(''); // removed bot token
+client.login('');
